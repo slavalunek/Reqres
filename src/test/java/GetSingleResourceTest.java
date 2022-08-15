@@ -12,12 +12,12 @@ public class GetSingleResourceTest {
     @Test
     public void getListResourceTest() {
         Root expectedRoot = Root.builder().
-                                data((lombok.Data) Data.builder()
-                                                       .id(2)
-                                                       .name("fuchsia rose")
-                                                       .year(2001)
-                                                       .color("#C74375")
-                                                       .pantone_value("17-2031").build())
+                                data(Data.builder()
+                                         .id(2)
+                                         .name("fuchsia rose")
+                                         .year(2001)
+                                         .color("#C74375")
+                                         .pantone_value("17-2031").build())
                                 .support(Support.builder()
                                                 .url("https://reqres.in/#support-heading")
                                                 .text("To keep ReqRes free, contributions towards server costs are appreciated!").build()).build();
@@ -26,12 +26,12 @@ public class GetSingleResourceTest {
                 contentType(ContentType.JSON).
                 accept(ContentType.JSON).
                 log().ifValidationFails().
-                when().
+        when().
                 get("https://reqres.in/api/unknown/2").
-                then().
+        then().
                 statusCode(200).
                 log().ifValidationFails().
-                extract().
+        extract().
                 body().as(Root.class);
 
         assertThat(actualRoot).isEqualTo(expectedRoot);

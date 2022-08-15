@@ -63,12 +63,12 @@ public class GetListUsersTest {
                 contentType(ContentType.JSON).
                 accept(ContentType.JSON).
                 log().ifValidationFails().
-                when().
+        when().
                 get("https://reqres.in/api/users?page=2").
-                then().
+        then().
                 statusCode(200).
                 log().ifValidationFails().
-                extract().
+        extract().
                 body().as(Root.class);
 
         assertThat(actualRoot).isEqualTo(expectedRoot);

@@ -18,9 +18,9 @@ public class PutUpdateTest {
                         "\"job\": \"zion resident\"\n" +
                         "}").
                 log().all().
-                when().
+        when().
                 put("https://reqres.in/api/users/2").
-                then().
+        then().
                 statusCode(200).
                 body("name", equalTo("morpheus"),
                         "job", equalTo("zion resident"),
