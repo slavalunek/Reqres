@@ -1,4 +1,4 @@
-package rest.dto.delayedResponse;
+package rest.dto.listResource;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,8 +14,8 @@ import static lombok.AccessLevel.PRIVATE;
 public class Datum {
 
     public int id;
-    public String email;
-    public String first_name;
-    public String last_name;
-    public String avatar;
+    public String name;
+    public int year;
+    public String color;
+    public String pantone_value;
 }

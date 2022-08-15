@@ -1,4 +1,4 @@
-package rest.dto.delayedResponse;
+package rest.dto.listResource;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,11 +11,8 @@ import static lombok.AccessLevel.PRIVATE;
 @AllArgsConstructor(access = PRIVATE)
 @NoArgsConstructor
 @Builder
-public class Datum {
+public class Support {
 
-    public int id;
-    public String email;
-    public String first_name;
-    public String last_name;
-    public String avatar;
+    public String url;
+    public String text;
 }

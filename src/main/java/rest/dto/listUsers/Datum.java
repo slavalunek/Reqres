@@ -1,4 +1,4 @@
-package rest.dto.delayedResponse;
+package rest.dto.listUsers;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
