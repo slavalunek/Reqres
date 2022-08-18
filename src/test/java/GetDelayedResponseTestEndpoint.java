@@ -9,7 +9,7 @@ import java.util.List;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GetDelayedResponseTest {
+public class GetDelayedResponseTestEndpoint {
 
     @Test
     public void getDelayedResponseTest() {
