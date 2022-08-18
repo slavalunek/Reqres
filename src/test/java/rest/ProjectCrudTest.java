@@ -10,6 +10,7 @@ import rest.dto.clients.ProjectApiClient;
 import rest.dto.clients.postModals.ResponseEndpointPost;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 public class ProjectCrudTest {
 
@@ -48,7 +49,16 @@ public class ProjectCrudTest {
     public void getAllProjectTest() {
         AllProjects expectedResponseEndpointGetAll = factory.prepareGetAllProjectsResponse();
 
-        AllProjects actualResponseEndpointGetAll = projectApiClient.getAllProject("?limit=10&offset=2");
+        AllProjects actualResponseEndpointGetAll = projectApiClient.getAllProject();
         assertThat(actualResponseEndpointGetAll).isEqualTo(expectedResponseEndpointGetAll);
+    }
+
+    @Test
+    public void validateGetProjectResponseAgainstSchemaTest() {
+        Project expectedProject = factory.prepareObject();
+        ResponseEndpointPost posProjectActual = projectApiClient.postProject(expectedProject);
+
+        Response projectResponse = projectApiClient.getProjectResponse("DSFGS");
+        projectResponse.then().assertThat().body(matchesJsonSchemaInClasspath("project-schema.json"));
     }
 }

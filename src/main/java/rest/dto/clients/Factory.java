@@ -13,6 +13,7 @@ public class Factory {
     Faker faker = new Faker();
     String title = faker.name().title();
     String code = "dsfgs";
+
     public Project prepareObject() {
         return Project.builder()
                       .title(title)

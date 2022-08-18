@@ -8,7 +8,7 @@ import rest.dto.clients.postModals.ResponseEndpointPost;
 
 import java.util.Map;
 
-public class ProjectApiClient extends BaseApiClient{
+public class ProjectApiClient extends BaseApiClient {
 
     public static final String PROJECT_URI = "/v1/project";
     public static final String PROJECT_URI_WITH_CODE = PROJECT_URI + "/{projectCode}";
@@ -32,8 +32,8 @@ public class ProjectApiClient extends BaseApiClient{
                        .as(ResponseEndpointGet.class);
     }
 
-    public AllProjects getAllProject(String projectCode) {
-        Response response = get(PROJECT_URI_WITH_CODE, Map.of(PROJECT_CODE, projectCode));
+    public AllProjects getAllProject() {
+        Response response = getAll(PROJECT_URI, Map.of("limit", "10", "offset", "2"));
         return response.then()
                        .statusCode(200)
                        .extract()

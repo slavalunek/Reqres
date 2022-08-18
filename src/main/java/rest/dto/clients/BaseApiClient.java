@@ -16,7 +16,7 @@ public class BaseApiClient {
         rqSpec = given()
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .header("token","8eee9f600e10a105a1887b3397e7278d453f3f77")
+                .header("token", "8eee9f600e10a105a1887b3397e7278d453f3f77")
                 .baseUri("https://api.qase.io")
                 .log().ifValidationFails();
     }
@@ -35,6 +35,17 @@ public class BaseApiClient {
     public Response get(String uri, Map<String, ?> parameterNameValuePairs) {
         return given().spec(rqSpec)
                       .pathParams(parameterNameValuePairs)
+                      .when()
+                      .get(uri)
+                      .then()
+                      .log().ifValidationFails()
+                      .extract()
+                      .response();
+    }
+
+    public Response getAll(String uri, Map<String, ?> parameterNameValuePairs) {
+        return given().spec(rqSpec)
+                      .queryParams(parameterNameValuePairs)
                       .when()
                       .get(uri)
                       .then()
