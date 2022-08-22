@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "boolean"
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "counts": {
+          "type": "object",
+          "properties": {
+            "cases": {
+              "type": "integer"
+            },
+            "suites": {
+              "type": "integer"
+            },
+            "milestones": {
+              "type": "integer"
+            },
+            "runs": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "total"
+              ]
+            },
+            "defects": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "integer"
+                },
+                "open": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "title",
+        "code"
+      ]
+    }
+  }
+}
